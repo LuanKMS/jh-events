@@ -16,7 +16,7 @@ npm run dev
 ## Objetivos
 
 - :white_check_mark: Criar um readme.md com todas as informação do projeto
-- :white_square_button: Definir e Criar o *design* do site
+- :white_check_mark: Definir e Criar o *design* do site
 - :white_square_button: Importar os componentes necessários do [shadcn/ui](https://ui.shadcn.com/)
 - :white_square_button: Criar o componenente *Wrapper*
   - :white_square_button: Criar o componente *Header*
