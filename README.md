@@ -18,9 +18,9 @@ npm run dev
 - :white_check_mark: Criar um readme.md com todas as informação do projeto
 - :white_check_mark: Definir e Criar o *design* do site
 - :white_check_mark: Importar os componentes necessários do [shadcn/ui](https://ui.shadcn.com/)
-- :white_square_button: Criar o componenente *Wrapper*
-  - :white_square_button: Criar o componente *Header*
-  - :white_square_button: Criar o componente *Footer*
+- :white_check_mark: Criar o componenente *Wrapper*
+  - :white_check_mark: Criar o componente *Header*
+  - :white_check_mark: Criar o componente *Footer*
 - :white_square_button: Criar a rota *Home*
   - :white_square_button: Criar todo o html
   - :white_square_button: Criar todo o estilo

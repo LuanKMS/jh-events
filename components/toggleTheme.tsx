@@ -10,7 +10,8 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   return <NextThemesProvider {...props}>{children}</NextThemesProvider>
 }
 
-export function ToggleTheme(){
+
+export function ToggleTheme(props: React.ButtonHTMLAttributes<HTMLButtonElement>){
   const { setTheme } = useTheme()
 
   const data: dataDropMenu.IPropsDropMenu["data"] = [
@@ -19,9 +20,9 @@ export function ToggleTheme(){
     { item: true, click: () => setTheme('system'), content: "system" },
   ]
   const trigger = (
-    <btn.Button variant="outline" size="icon">
-      <Sun className='h-4 w-4 scale-100 dark:scale-0'/>
-      <MoonStar className='absolute h-4 w-4 scale-0 dark:scale-100'/>
+    <btn.Button variant="outline" size="icon" {...props}>
+      <Sun className='scale-100 dark:scale-0'/>
+      <MoonStar className='absolute scale-0 dark:scale-100'/>
     </btn.Button>
   )
 

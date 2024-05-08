@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { toggleTheme } from "@/components/index"
+import { toggleTheme, wrapper } from "@/components/index"
 import "./globals.css"
+import { cn } from "@/lib/utils"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,14 +22,11 @@ export default function RootLayout({
   console.log(toggleTheme)
   return (
     <html lang="pt-br">
-      <body className={inter.className}>
-        <toggleTheme.ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
+      <body className={cn(inter.className, "font-medium")}>
+        <toggleTheme.ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange >
+          <wrapper.Wrapper>
+            { children }
+          </wrapper.Wrapper>
         </toggleTheme.ThemeProvider>
       </body>
     </html>
