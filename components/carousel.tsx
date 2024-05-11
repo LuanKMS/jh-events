@@ -29,7 +29,7 @@ export function NavSlideCarousel(
     <div className={cn("flex gap-4 justify-center items-center w-full", className)} {...props}>
       {Array.from({length: count}).map((_, i) => 
         <span key={i} onClick={() => onClick(i)} 
-        className={`block w-[2%] sm:w-[3%] aspect-square duration-200 rounded-full border-2 ${select === i? "bg-emphasis border-transparent" : "bg-transparent border-emphasis"}`} />
+        className={`block w-[1.5%] sm:w-[2%] aspect-square duration-200 rounded-full border-2 ${select === i? "bg-emphasis border-transparent" : "bg-transparent border-emphasis"}`} />
       )}
     </div>
   )
