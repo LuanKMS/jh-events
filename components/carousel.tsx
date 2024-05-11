@@ -3,7 +3,7 @@ import Autoplay from "embla-carousel-autoplay"
 import { carousel } from "./ui"
 import { cn } from "@/lib/utils"
 
-export type IPropsDiv = React.HTMLAttributes<HTMLDivElement>
+type IPropsDiv = React.HTMLAttributes<HTMLDivElement>
 type IPropsNavSlideCarousel = { count: number, api: carousel.CarouselApi } & IPropsDiv
 
 export function NavSlideCarousel(
@@ -16,7 +16,6 @@ export function NavSlideCarousel(
       return
 
     api.on('select', (api: carousel.CarouselApi) => {
-      console.log(select, api)
       setSelect(api?.selectedScrollSnap()?? 1);
     })
   })
@@ -29,8 +28,8 @@ export function NavSlideCarousel(
   return(
     <div className={cn("flex gap-4 justify-center items-center w-full", className)} {...props}>
       {Array.from({length: count}).map((_, i) => 
-        <span key={i} onClick={(e) => onClick(i)} 
-        className={`block h-5 w-5 duration-200 rounded-full border-2 ${select === i? "bg-emphasis border-transparent" : "bg-transparent border-emphasis"}`} />
+        <span key={i} onClick={() => onClick(i)} 
+        className={`block w-[2%] sm:w-[3%] aspect-square duration-200 rounded-full border-2 ${select === i? "bg-emphasis border-transparent" : "bg-transparent border-emphasis"}`} />
       )}
     </div>
   )
@@ -40,16 +39,14 @@ export function Carousel({ children, className, ...props }: IPropsDiv){
   const [api, setApi] = React.useState<carousel.CarouselApi>()
 
   return(
-    <carousel.Carousel setApi={setApi} opts={{
-      align: 'center'
-    }} plugins={[
+    <carousel.Carousel setApi={setApi} plugins={[
       Autoplay({
         delay: 4000,
       }),
     ]} className={cn("relative select-none", className)} { ...props }>
       <carousel.CarouselContent>
         {React.Children.map(children, (child, i) => (
-          <carousel.CarouselItem key={i}>
+          <carousel.CarouselItem key={i} className="flex justify-center items-end">
             { child }
           </carousel.CarouselItem>
         ))}
@@ -58,7 +55,7 @@ export function Carousel({ children, className, ...props }: IPropsDiv){
       {api? 
         <NavSlideCarousel className="absolute bottom-5" 
           count={React.Children.count(children)} api={api}/> 
-        : null}
+      : null}
     </carousel.Carousel>
   )
 }

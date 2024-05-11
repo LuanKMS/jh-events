@@ -1,15 +1,64 @@
 "use client"
-import { carousel } from "@/components/index"
+import { carousel, cardNews } from "@/components/index"
+
+const news = [
+  {
+    catetory: "Futebol",
+    title: "Jogador machuca o pé"
+  },
+  {
+    catetory: "Tecnologia",
+    title: "Nova atualização do sistema operacional lançada"
+  },
+  {
+    catetory: "Cinema",
+    title: "Filme ganha prêmio de Melhor Filme Estrangeiro"
+  },
+  {
+    catetory: "Ciência",
+    title: "Descoberta nova espécie de planta na Amazônia"
+  },
+  {
+    catetory: "Saúde",
+    title: "Estudo revela os benefícios da meditação para o coração"
+  },
+  {
+    catetory: "Política",
+    title: "Presidente anuncia medidas para combater o desemprego"
+  },
+  {
+    catetory: "Entretenimento",
+    title: "Nova temporada de série popular estreia na plataforma de streaming"
+  },
+  {
+    catetory: "Educação",
+    title: "Escola implementa programa de leitura para incentivar o hábito entre os alunos"
+  },
+  {
+    catetory: "Economia",
+    title: "Bolsa de valores atinge recorde histórico"
+  },
+  {
+    catetory: "Meio Ambiente",
+    title: "ONG lança campanha de conscientização sobre reciclagem"
+  }
+];
 
 export default function Home() {
   return (
-    <main className="min-h-screen p-5">
+    <main className="flex flex-col min-h-screen p-5 gap-5">
       <carousel.Carousel>
-        {
-          Array.from({ length: 10 }).map((_, i) => 
-          <img alt="test" key={i} src="https://picsum.photos/1200/500" />)
-        }
+        {Array.from({ length: 10 }).map((_, i) =>
+          <img alt="test" key={i} src="https://picsum.photos/1700/500" />
+        )}
       </carousel.Carousel>
+
+      <div className="grid justify-center items-start lg:grid-cols-5 gap-4 sm:grid-cols-3 md:grid-cols-4 ">
+        {news.map((n, i) =>
+          <cardNews.CardNews thumbnail="https://picsum.photos/250/150" 
+            catetory={n.catetory}title={n.title} />
+        )}
+      </div>
     </main>
   );
 }
