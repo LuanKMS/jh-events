@@ -1,4 +1,5 @@
 import React from "react"
+import Autoplay from "embla-carousel-autoplay"
 import { carousel } from "./ui"
 import { cn } from "@/lib/utils"
 
@@ -41,7 +42,11 @@ export function Carousel({ children, className, ...props }: IPropsDiv){
   return(
     <carousel.Carousel setApi={setApi} opts={{
       align: 'center'
-    }} className={cn("relative select-none", className)} { ...props }>
+    }} plugins={[
+      Autoplay({
+        delay: 4000,
+      }),
+    ]} className={cn("relative select-none", className)} { ...props }>
       <carousel.CarouselContent>
         {React.Children.map(children, (child, i) => (
           <carousel.CarouselItem key={i}>

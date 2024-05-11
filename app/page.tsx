@@ -1,5 +1,5 @@
 "use client"
-import { carousel } from "@/components/index";
+import { carousel } from "@/components/index"
 
 export default function Home() {
   return (
