@@ -2,7 +2,7 @@ import { toggleTheme } from "../index";
 
 export function Header(){
   return(
-    <header className="sticky top-0 flex justify-between items-center w-full h-20 p-5 bg-sky-400 dark:bg-purple-400">
+    <header className="sticky top-0 z-50 flex justify-between items-center w-full h-20 p-5 bg-emphasis">
       <div className="w-max text-center">
         <h1 className="text-5xl font-black">
           HJ

@@ -4,7 +4,7 @@ import { openLink } from "@/lib/utils";
 
 export function Footer(){
   return(
-    <footer className="flex justify-between items-center w-full h-32 p-5 bg-sky-400 dark:bg-purple-400">
+    <footer className="flex justify-between items-center w-full h-32 p-5 bg-emphasis">
       <div className="w-max text-center">
         <h1 className="text-5xl font-black">
           HJ
