@@ -53,12 +53,18 @@ export default function Home() {
         )}
       </carousel.Carousel>
 
-      <div className="grid justify-center items-start lg:grid-cols-5 gap-4 sm:grid-cols-3 md:grid-cols-4 ">
+      <div className="grid grid-cols-2 grid-rows-3 grid-flow-col">
+        <cardNews.CardNews className="col-span-1 row-span-3 text-3xl" thumbnail="https://picsum.photos/750/450" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol" />
+
+        <cardNews.CardNews className="col-span-1 row-span-3 text-3xl" thumbnail="https://picsum.photos/750/450" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol" />
+      </div>
+
+      <article className="grid justify-center items-start lg:grid-cols-5 gap-4 sm:grid-cols-3 md:grid-cols-4 ">
         {news.map((n, i) =>
-          <cardNews.CardNews thumbnail="https://picsum.photos/250/150" 
+          <cardNews.CardNews key={i} thumbnail="https://picsum.photos/250/150" 
             catetory={n.catetory}title={n.title} />
         )}
-      </div>
+      </article>
     </main>
   );
 }

@@ -21,13 +21,14 @@ export function NewsInformations(
   )
 }
 
-export function CardNews({thumbnail, catetory, title, ...props}: ICardNews){
+export function CardNews({thumbnail, catetory, title, className, ...props}: ICardNews){
   return(
-    <card.Card className="flex justify-center items-center border-none">
-      <card.CardContent {...props}>
+    <card.Card className={cn("flex justify-center items-center border-none text-sm", className )} 
+    {...props}>
+      <card.CardContent>
         <img alt="Imagem" src={thumbnail} className="select-none"/>
         <NewsInformations className="my-1" catetory={catetory} date="04/03/23"/>
-        <p className="text-wrap text-sm font-semibold">{title}</p>
+        <p className="text-wrap font-semibold">{title}</p>
       </card.CardContent>
     </card.Card>
   )
