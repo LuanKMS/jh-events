@@ -46,23 +46,24 @@ const news = [
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen p-5 gap-5">
+    <main className="flex flex-col min-h-screen p-5 gap-10">
       <carousel.Carousel>
         {Array.from({ length: 10 }).map((_, i) =>
-          <img alt="test" key={i} src="https://picsum.photos/1700/500" />
+          <cardNews.CardNewsBg key={i} src="https://picsum.photos/1700/600" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol"
+          variant="default"/>
         )}
       </carousel.Carousel>
 
-      <div className="grid grid-cols-2 grid-rows-3 grid-flow-col">
-        <cardNews.CardNews className="col-span-1 row-span-3 text-3xl" thumbnail="https://picsum.photos/750/450" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol" />
+      <div className="flex items-between gap-6">
+        <cardNews.CardNews className="text-3xl" src="https://picsum.photos/750/450" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol" priority="high" />
 
-        <cardNews.CardNews className="col-span-1 row-span-3 text-3xl" thumbnail="https://picsum.photos/750/450" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol" />
+        <cardNews.CardNews className="text-3xl" src="https://picsum.photos/750/450" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol" priority="high" />
       </div>
 
       <article className="grid justify-center items-start lg:grid-cols-5 gap-4 sm:grid-cols-3 md:grid-cols-4 ">
         {news.map((n, i) =>
-          <cardNews.CardNews key={i} thumbnail="https://picsum.photos/250/150" 
-            catetory={n.catetory}title={n.title} />
+          <cardNews.CardNews key={i} src="https://picsum.photos/750/550"
+          catetory={n.catetory} title={n.title} priority="low"/>
         )}
       </article>
     </main>

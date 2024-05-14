@@ -52,10 +52,10 @@ export function Carousel({ children, className, ...props }: IPropsDiv){
         ))}
       </carousel.CarouselContent>
 
-      {api? 
-        <NavSlideCarousel className="absolute bottom-5" 
-          count={React.Children.count(children)} api={api}/> 
-      : null}
+      {api && (
+        <NavSlideCarousel className="absolute bottom-5" api={api}
+        count={React.Children.count(children)}/> 
+      )}
     </carousel.Carousel>
   )
 }

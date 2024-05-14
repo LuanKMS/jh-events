@@ -19,7 +19,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log(toggleTheme)
+
   return (
     <html lang="pt-br">
       <body className={cn(inter.className, "font-medium")}>
