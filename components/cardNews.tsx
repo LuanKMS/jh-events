@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils"
-import { card, Skeleton } from "./ui"
+import { card, Skeleton, btn } from "./ui"
 import Image from "next/image"
 import React from "react"
 import { cva, VariantProps } from "class-variance-authority"
@@ -16,7 +16,8 @@ type IPropsCardNews = IPropsBaseCardNews & {
   priority: "high" | "normal" | "low"
 }
 type IPropsCardNewsBg = IPropsBaseCardNews & {
-  variant: "default"
+  variant: "default",
+  subtitle?: string
 }
 
 export function NewsInformations(
@@ -61,23 +62,40 @@ export function CardNews({src, catetory, title, className, ...props}: IPropsCard
   )
 }
 
-export function CardNewsBg(
-  {src, catetory, title, variant, className, ...props}: IPropsCardNewsBg
+export function Button(
+  {className, children, ...props}: React.HTMLAttributes<HTMLButtonElement>
 ){
+  return(
+    <btn.Button className={cn("bg-emphasis border-transparent border-2 hover:bg-transparent hover:border-emphasis", className)} variant="outline" {...props}>
+      {children}
+    </btn.Button>
+  )
+}
 
-  const styles = {
-    default: {
-      container: "absolute bottom-28 w-full p-6 ",
-      title: "font-bold text-4xl "
-    }
-  }
+export function CardNewsBg(
+  {src, catetory, title, variant="default", className, children, subtitle, ...props}: IPropsCardNewsBg
+){
 
   return(
     <card.Card className={cn("flex justify-center items-center border-none text-sm p-0", className )}
     {...props}>
       <card.CardContent className="relative p-0">
-        <div className={styles[variant].container}>
-          <h1 className={styles[variant].title}>{title}</h1>
+        <div className="absolute flex flex-col justify-end bottom-0 w-full h-full p-6 pb-24 bg-gradient-to-tr from-background">
+          <h1 className="font-bold text-4xl">
+            <NewsInformations catetory="Esportes" date="04/03/23" 
+            className= "text-xl justify-start gap-7"/>
+            {title}
+          </h1>
+
+          {subtitle && (
+            <p className="text-foreground/75">{subtitle}</p>
+          )}
+
+          {children && (
+            <div className="flex flex-row mt-8 pl-4 gap-4">
+              {children}
+            </div>
+          )}
         </div>
         <ThumbnailNews src={src} w={1700} h={600}/>
       </card.CardContent>

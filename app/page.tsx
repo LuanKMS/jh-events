@@ -50,7 +50,13 @@ export default function Home() {
       <carousel.Carousel>
         {Array.from({ length: 10 }).map((_, i) =>
           <cardNews.CardNewsBg key={i} src="https://picsum.photos/1700/600" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol"
-          variant="default"/>
+          variant="default" subtitle='"Isso parece até mentira" - bilu'>
+            <cardNews.Button>oi</cardNews.Button>
+            <cardNews.Button>oi</cardNews.Button>
+            <cardNews.Button>oi</cardNews.Button>
+            <cardNews.Button>oi</cardNews.Button>
+            <cardNews.Button>oi</cardNews.Button>
+          </cardNews.CardNewsBg>
         )}
       </carousel.Carousel>
 
