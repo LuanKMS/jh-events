@@ -47,21 +47,6 @@ export function ThumbnailNews(
   )
 }
 
-export function CardNews({src, catetory, title, className, ...props}: IPropsCardNews){
-  const priority = props.priority === "high"? 1 : props.priority === "normal"? 2 : 3;
-
-  return(
-    <card.Card className={cn("flex justify-center items-center border-none text-sm p-0", className )} 
-    {...props}>
-      <card.CardContent className="p-0">
-        <ThumbnailNews src={src} w={750/priority} h={550/priority}/>
-        <NewsInformations className="my-1" catetory={catetory} date="04/03/23"/>
-        <p className="text-wrap font-semibold">{title}</p>
-      </card.CardContent>
-    </card.Card>
-  )
-}
-
 export function Button(
   {className, children, ...props}: React.HTMLAttributes<HTMLButtonElement>
 ){
@@ -69,6 +54,21 @@ export function Button(
     <btn.Button className={cn("bg-emphasis border-transparent border-2 hover:bg-transparent hover:border-emphasis", className)} variant="outline" {...props}>
       {children}
     </btn.Button>
+  )
+}
+
+export function CardNews({src, catetory, title, className, ...props}: IPropsCardNews){
+  const priority = props.priority === "high"? 1 : props.priority === "normal"? 2 : 3;
+
+  return(
+    <card.Card className={cn("flex justify-center items-start border-none text-sm p-0", className )} 
+    {...props}>
+      <card.CardContent className="p-0">
+        <ThumbnailNews src={src} w={750/priority} h={550/priority}/>
+        <NewsInformations className="my-1" catetory={catetory} date="04/03/23"/>
+        <p className="text-wrap min-w-full font-semibold w-min">{title}</p>
+      </card.CardContent>
+    </card.Card>
   )
 }
 

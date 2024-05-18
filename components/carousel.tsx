@@ -35,7 +35,7 @@ export function NavSlideCarousel(
   )
 }
 
-export function Carousel({ children, className, ...props }: IPropsDiv){
+export function CarouselImg({ children, className, ...props }: IPropsDiv){
   const [api, setApi] = React.useState<carousel.CarouselApi>()
 
   return(
@@ -57,5 +57,29 @@ export function Carousel({ children, className, ...props }: IPropsDiv){
         count={React.Children.count(children)}/> 
       )}
     </carousel.Carousel>
+  )
+}
+
+export function CarouselItems(
+  { children, className, title, ...props }: IPropsDiv & { title?: string }
+){
+  const [api, setApi] = React.useState<carousel.CarouselApi>()
+
+  return(
+    <article className="flex flex-col gap-4 px-12">
+       {title && (<h1 className="text-2xl font-semibold">{title}</h1>)}
+       <carousel.Carousel className={cn("select-none", className)} setApi={setApi} opts={{loop: false}} { ...props }>
+        <carousel.CarouselContent className="items-start">
+          {React.Children.map(children, (child, i) => (
+            <carousel.CarouselItem key={i} className="basis-[none]">
+              { child }
+            </carousel.CarouselItem>
+          ))}
+        </carousel.CarouselContent>
+
+        <carousel.CarouselNext/>
+        <carousel.CarouselPrevious/>
+      </carousel.Carousel>
+    </article>
   )
 }
