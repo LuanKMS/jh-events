@@ -46,7 +46,7 @@ const news = [
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen p-5 gap-10">
+    <>
       <carousel.CarouselImg>
         {Array.from({ length: 10 }).map((_, i) =>
           <cardNews.CardNewsBg key={i} src="https://picsum.photos/1700/600" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol"
@@ -86,6 +86,6 @@ export default function Home() {
             catetory={n.catetory} title={n.title} priority="low"/>
           )}
       </carousel.CarouselItems>
-    </main>
+    </>
   );
 }
