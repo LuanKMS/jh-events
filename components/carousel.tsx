@@ -68,7 +68,7 @@ export function CarouselItems(
   return(
     <article className="flex flex-col gap-4 px-12">
        {title && (<h1 className="text-2xl font-semibold">{title}</h1>)}
-       <carousel.Carousel className={cn("select-none", className)} setApi={setApi} opts={{loop: false}} { ...props }>
+       <carousel.Carousel className={cn("select-none", className)} setApi={setApi} opts={{dragFree: true}} { ...props }>
         <carousel.CarouselContent className="items-start">
           {React.Children.map(children, (child, i) => (
             <carousel.CarouselItem key={i} className="basis-[none]">
