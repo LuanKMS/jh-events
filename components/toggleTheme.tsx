@@ -17,11 +17,9 @@ export function ToggleTheme(
 
   return(
     <dropMenu.DropdownMenu>
-      <dropMenu.DropdownMenuTrigger className="focus:outline-none">
-        <btn.Button size="icon" {...props} className={cn("bg-transparent duration-200 hover:bg-transparent hover:opacity-75", className)}>
-          <Sun className='scale-100 dark:scale-0'/>
-          <MoonStar className='absolute scale-0 dark:scale-100'/>
-        </btn.Button>
+      <dropMenu.DropdownMenuTrigger className={cn("flex justify-center items-center w-10 h-10 hover:opacity-75 focus:outline-none", className)}>
+        <MoonStar className='absolute scale-0 dark:scale-100'/>
+        <Sun className='scale-100 dark:scale-0'/>
       </dropMenu.DropdownMenuTrigger>
 
       <dropMenu.DropdownMenuContent>
