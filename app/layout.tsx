@@ -23,11 +23,9 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={cn(inter.className, "font-medium")}>
-        <toggleTheme.ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange >
-          <wrapper.Wrapper>
-            { children }
-          </wrapper.Wrapper>
-        </toggleTheme.ThemeProvider>
+        <wrapper.Wrapper>
+          { children }
+        </wrapper.Wrapper>
       </body>
     </html>
   );
