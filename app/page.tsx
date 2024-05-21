@@ -44,48 +44,54 @@ const news = [
   }
 ];
 
-export default function Home() {
+function MainCarousel(){
   return (
+    <carousel.CarouselImg>
+      {Array.from({ length: 10 }).map((_, i) =>
+        <cardNews.CardNewsBg key={i} src="https://picsum.photos/1700/600" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol"
+        variant="default" subtitle='"Isso parece até mentira" - bilu'>
+          <cardNews.Button>oi</cardNews.Button>
+          <cardNews.Button>oi</cardNews.Button>
+          <cardNews.Button>oi</cardNews.Button>
+          <cardNews.Button>oi</cardNews.Button>
+          <cardNews.Button>oi</cardNews.Button>
+        </cardNews.CardNewsBg>
+      )}
+    </carousel.CarouselImg>
+  )
+}
+
+function MainNews(){
+  return(
+    <div className="flex items-between gap-6">
+      <cardNews.CardNews className="text-3xl" src="https://picsum.photos/750/450" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol" priority="high" />
+
+      <cardNews.CardNews className="text-3xl" src="https://picsum.photos/750/450" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol" priority="high" />
+    </div>
+  )
+}
+
+function CarouselItems({data, title, src}: {data: any[], title: string, src: string}){
+  return(
+    <carousel.CarouselItems title={title}>
+      {data.map((n, i) =>
+        <cardNews.CardNews key={i} src={src}
+        catetory={n.catetory} title={n.title} priority="low"/>
+      )}
+    </carousel.CarouselItems>
+  )
+}
+
+export default function Home(){
+  return(
     <>
-      <carousel.CarouselImg>
-        {Array.from({ length: 10 }).map((_, i) =>
-          <cardNews.CardNewsBg key={i} src="https://picsum.photos/1700/600" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol"
-          variant="default" subtitle='"Isso parece até mentira" - bilu'>
-            <cardNews.Button>oi</cardNews.Button>
-            <cardNews.Button>oi</cardNews.Button>
-            <cardNews.Button>oi</cardNews.Button>
-            <cardNews.Button>oi</cardNews.Button>
-            <cardNews.Button>oi</cardNews.Button>
-          </cardNews.CardNewsBg>
-        )}
-      </carousel.CarouselImg>
-
-      <div className="flex items-between gap-6">
-        <cardNews.CardNews className="text-3xl" src="https://picsum.photos/750/450" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol" priority="high" />
-
-        <cardNews.CardNews className="text-3xl" src="https://picsum.photos/750/450" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol" priority="high" />
-      </div>
-
-      <carousel.CarouselItems title="Mais Recentes">
-          {news.map((n, i) =>
-            <cardNews.CardNews key={i} src="https://picsum.photos/750/550"
-            catetory={n.catetory} title={n.title} priority="low"/>
-          )}
-      </carousel.CarouselItems>
-
-      <carousel.CarouselItems title="Mais vistas">
-          {news.map((n, i) =>
-            <cardNews.CardNews key={i} src="https://picsum.photos/750/550"
-            catetory={n.catetory} title={n.title} priority="low"/>
-          )}
-      </carousel.CarouselItems>
-
-      <carousel.CarouselItems title="Mais porpulares">
-          {news.map((n, i) =>
-            <cardNews.CardNews key={i} src="https://picsum.photos/750/550"
-            catetory={n.catetory} title={n.title} priority="low"/>
-          )}
-      </carousel.CarouselItems>
+      <MainCarousel />
+      
+      <MainNews />
+      
+      <CarouselItems data={news} title="Estudos" src="https://picsum.photos/750/550"/>
+      <CarouselItems data={news} title="Notícias" src="https://picsum.photos/750/550"/>
+      <CarouselItems data={news} title="Fofocas" src="https://picsum.photos/750/550"/>
     </>
   );
 }

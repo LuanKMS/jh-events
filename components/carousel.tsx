@@ -1,6 +1,6 @@
 import React from "react"
 import Autoplay from "embla-carousel-autoplay"
-import { carousel } from "./ui"
+import { carousel, btn } from "./ui"
 import { cn } from "@/lib/utils"
 
 type IPropsDiv = React.HTMLAttributes<HTMLDivElement>
@@ -66,9 +66,9 @@ export function CarouselItems(
   const [api, setApi] = React.useState<carousel.CarouselApi>()
 
   return(
-    <article className="flex flex-col gap-4 px-12">
+    <article className="flex flex-col px-12">
        {title && (<h1 className="text-2xl font-semibold">{title}</h1>)}
-       <carousel.Carousel className={cn("select-none", className)} setApi={setApi} opts={{dragFree: true}} { ...props }>
+       <carousel.Carousel className={cn("select-none p-0", className)} setApi={setApi} opts={{dragFree: true}} { ...props }>
         <carousel.CarouselContent className="items-start">
           {React.Children.map(children, (child, i) => (
             <carousel.CarouselItem key={i} className="basis-[none]">
@@ -77,8 +77,8 @@ export function CarouselItems(
           ))}
         </carousel.CarouselContent>
 
-        <carousel.CarouselNext/>
-        <carousel.CarouselPrevious/>
+        <carousel.CarouselNext className="hidden h-full border-none rounded-sm sm:block" />
+        <carousel.CarouselPrevious className=" hidden h-full border-none rounded-sm sm:block"/>
       </carousel.Carousel>
     </article>
   )
