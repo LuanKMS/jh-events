@@ -16,7 +16,6 @@ type IPropsCardNews = IPropsBaseCardNews & {
   priority: "high" | "normal" | "low"
 }
 type IPropsCardNewsBg = IPropsBaseCardNews & {
-  variant: "default",
   subtitle?: string
 }
 
@@ -73,7 +72,7 @@ export function CardNews({src, category, title, className, ...props}: IPropsCard
 }
 
 export function CardNewsBg(
-  {src, category, title, variant="default", className, children, subtitle, ...props}: IPropsCardNewsBg
+  {src, category, title, className, children, subtitle, ...props}: IPropsCardNewsBg
 ){
 
   return(

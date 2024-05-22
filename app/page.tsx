@@ -10,7 +10,7 @@ function MainNews({news}: {news: api.IMainNews[] | undefined}){
   return (
     <carousel.CarouselImg>
       {news?.map(({id, ...n}, i) =>
-        <cardNews.CardNewsBg key={id} variant="default" { ...n }>
+        <cardNews.CardNewsBg key={id} { ...n }>
 
           {n?.btns.map((b) => (
             <cardNews.Button>
