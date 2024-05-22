@@ -1,24 +1,24 @@
-type IWriter = {
+export type IWriter = {
   name: string;
   description: string;
 }
-type INews = {
+export type INews = {
   category: string;
   title: string;
   src: string;
   id: number;
 }
-type IMainNews = INews & {
+export type IMainNews = INews & {
   subtitle: string;
   btns: {
     title: string;
     link: string;
-  };
+  }[];
 }
-type IDb = {
+export type IDb = {
   writers?: IWriter[];
   news: INews[];
-  relevantNews: number[];
+  relevantNews: INews[];
   mainNews: IMainNews[];
 }
 
@@ -137,7 +137,20 @@ const db: IDb = {
       id: 17,
     }
   ],
-  relevantNews: [5, 12,],
+  relevantNews: [
+      {
+      category: "Tecnologia",
+      title: "Novo smartphone da marca X promete revolucionar o mercado",
+      src: "https://picsum.photos/750/550",
+      id: 1,
+    },
+    {
+      category: "Esporte",
+      title: "Time local conquista título importante em campeonato regional",
+      src: "https://picsum.photos/750/550",
+      id: 2,
+    }
+  ],
   mainNews: [
     {
       category: "Educação",
@@ -145,10 +158,12 @@ const db: IDb = {
       src: "https://picsum.photos/1700/600",
       id: 31,
       subtitle: "Novas salas de aula e laboratórios de informática",
-      btns: {
-        title: "Saiba mais",
-        link: "https://escola.com/noticia/melhorias-infraestrutura-detalhes"
-      }
+      btns: [
+        {
+          title: "Saiba mais",
+          link: "https://example.com/",
+        },
+      ]
     },
     {
       category: "Eventos",
@@ -156,10 +171,12 @@ const db: IDb = {
       src: "https://picsum.photos/1700/600",
       id: 61,
       subtitle: "Uma semana de atividades culturais e artísticas",
-      btns: {
+      btns: [
+      {
         title: "Veja a programação",
-        link: "https://escola.com/noticia/semana-cultural-programacao"
+        link: "https://example.com/",
       }
+    ]
     },
     {
       category: "Tecnologia",
@@ -167,10 +184,16 @@ const db: IDb = {
       src: "https://picsum.photos/1700/600",
       id: 71,
       subtitle: "Alunos terão acesso a cursos de programação gratuitos",
-      btns: {
-        title: "Confira os detalhes",
-        link: "https://escola.com/noticia/parceria-software-detalhes"
-      }
+      btns: [
+        {
+          title: "Inscreva-se",
+          link: "https://example.com/",
+        },
+        {
+          title: "Saiba mais",
+          link: "https://example.com/",
+        },
+      ]
     }
   ]
 }
