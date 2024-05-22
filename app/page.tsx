@@ -119,7 +119,7 @@ function MainCarousel(){
     <carousel.CarouselImg>
       {Array.from({ length: 10 }).map((_, i) =>
         <Link href={`/article/${i+20}`}>
-          <cardNews.CardNewsBg key={i} src="https://picsum.photos/1700/600" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol" variant="default" subtitle='"Isso parece até mentira" - bilu'>
+          <cardNews.CardNewsBg key={i} src="https://picsum.photos/1700/600" category="Esportes" title="Ronaldo ganha de ET em uma partida de futebol" variant="default" subtitle='"Isso parece até mentira" - bilu'>
             <cardNews.Button>oi</cardNews.Button>
             <cardNews.Button>oi</cardNews.Button>
             <cardNews.Button>oi</cardNews.Button>
@@ -133,11 +133,15 @@ function MainCarousel(){
 }
 
 function MainNews(){
+  const mainNews = [news[0], news[1]]
+
   return(
     <div className="flex items-between gap-6">
-      <cardNews.CardNews className="text-3xl" src="https://picsum.photos/750/450" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol" priority="high" />
-
-      <cardNews.CardNews className="text-3xl" src="https://picsum.photos/750/450" catetory="Esportes" title="Ronaldo ganha de ET em uma partida de futebol" priority="high" />
+      {mainNews.map(({id, ...attr}) =>
+        <Link href={`/article/${id}`}>
+          <cardNews.CardNews className="text-3xl" key={id} {...attr} priority="high"/>
+        </Link>
+      )}
     </div>
   )
 }
@@ -145,9 +149,9 @@ function MainNews(){
 function CarouselItems({data, title}: {data: INews[], title: string}){
   return(
     <carousel.CarouselItems title={title}>
-      {data.map((n, i) =>
-        <Link href={`/article/${n.id}`}>
-          <cardNews.CardNews key={i} src={n.src} catetory={n.category} title={n.title} priority="low"/>
+      {data.map(({id, ...attr}) =>
+        <Link href={`/article/${id}`}>
+          <cardNews.CardNews key={id} {...attr} priority="low"/>
         </Link>
       )}
     </carousel.CarouselItems>

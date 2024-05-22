@@ -6,10 +6,10 @@ import { cva, VariantProps } from "class-variance-authority"
 
 
 type IPropsDiv = React.HTMLAttributes<HTMLDivElement>
-type IPropsNewsInformations = { catetory: string, date: string } & IPropsDiv
+type IPropsNewsInformations = { category: string, date: string } & IPropsDiv
 type IPropsBaseCardNews = IPropsDiv & {
   src: string,
-  catetory: string,
+  category: string,
   title: string,
 }
 type IPropsCardNews = IPropsBaseCardNews & {
@@ -21,11 +21,11 @@ type IPropsCardNewsBg = IPropsBaseCardNews & {
 }
 
 export function NewsInformations(
-  {catetory, date, className, ...props}: IPropsNewsInformations)
+  {category, date, className, ...props}: IPropsNewsInformations)
 {
   return(
     <div className={cn("flex justify-between text-xs text-emphasis", className)} {...props}>
-      <p>{catetory}</p>
+      <p>{category}</p>
       <p>{date}</p>
     </div>
   )
@@ -57,7 +57,7 @@ export function Button(
   )
 }
 
-export function CardNews({src, catetory, title, className, ...props}: IPropsCardNews){
+export function CardNews({src, category, title, className, ...props}: IPropsCardNews){
   const priority = props.priority === "high"? 1 : props.priority === "normal"? 2 : 3;
 
   return(
@@ -65,7 +65,7 @@ export function CardNews({src, catetory, title, className, ...props}: IPropsCard
     {...props}>
       <card.CardContent className="p-0">
         <ThumbnailNews src={src} w={750/priority} h={550/priority}/>
-        <NewsInformations className="my-1" catetory={catetory} date="04/03/23"/>
+        <NewsInformations className="my-1" category={category} date="04/03/23"/>
         <p className="text-wrap min-w-full font-semibold w-min">{title}</p>
       </card.CardContent>
     </card.Card>
@@ -73,7 +73,7 @@ export function CardNews({src, catetory, title, className, ...props}: IPropsCard
 }
 
 export function CardNewsBg(
-  {src, catetory, title, variant="default", className, children, subtitle, ...props}: IPropsCardNewsBg
+  {src, category, title, variant="default", className, children, subtitle, ...props}: IPropsCardNewsBg
 ){
 
   return(
@@ -82,7 +82,7 @@ export function CardNewsBg(
       <card.CardContent className="relative p-0">
         <div className="absolute flex flex-col justify-end bottom-0 w-full h-full p-6 pb-24 bg-gradient-to-tr from-background">
           <h1 className="font-bold text-4xl">
-            <NewsInformations catetory="Esportes" date="04/03/23" 
+            <NewsInformations category="Esportes" date="04/03/23" 
             className= "text-xl justify-start gap-7"/>
             {title}
           </h1>
