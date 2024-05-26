@@ -21,12 +21,12 @@ npm run dev
 - :white_check_mark: Criar o componenente *Wrapper*
   - :white_check_mark: Criar o componente *Header*
   - :white_check_mark: Criar o componente *Footer*
-- :white_square_button: Criar a rota *Home*
+- :white_check_mark: Criar a rota *Home*
+  - :white_check_mark: Criar todo o html
+  - :white_check_mark: Criar todo o estilo
+- :white_check_mark: Criar a rota *News*
   - :white_square_button: Criar todo o html
   - :white_square_button: Criar todo o estilo
-- :white_square_button: Criar a rota *News*
-  - :white_square_button: Criar todo o html
-  - :white_square_button: Criar todo o estilo
-- :white_square_button: Criar a rota *Events*
+- :white_check_mark: Criar a rota *Events*
   - :white_square_button: Criar todo o html
   - :white_square_button: Criar todo o estilo
