@@ -2,15 +2,23 @@ import { cn } from "@/lib/utils"
 import { card, Skeleton, btn } from "./ui"
 import Image from "next/image"
 import React from "react"
-import { cva, VariantProps } from "class-variance-authority"
 
 
 type IPropsDiv = React.HTMLAttributes<HTMLDivElement>
-type IPropsNewsInformations = { category: string, date: string } & IPropsDiv
+type IPropsNewsInformations = IPropsDiv & { 
+  category?: string, 
+  date?: string 
+}
 type IPropsBaseCardNews = IPropsDiv & {
-  src: string,
-  category: string,
-  title: string,
+  src?: string,
+  category?: string,
+  title?: string,
+}
+type IPropsThumbnailNews = {
+  src?: string, 
+  w?: number, 
+  h?: number, 
+  className?: string
 }
 type IPropsCardNews = IPropsBaseCardNews & {
   priority: "high" | "normal" | "low"
@@ -20,29 +28,36 @@ type IPropsCardNewsBg = IPropsBaseCardNews & {
 }
 
 export function NewsInformations(
-  {category, date, className, ...props}: IPropsNewsInformations)
-{
+  {category, date, className, ...props}: IPropsNewsInformations
+){
   return(
-    <div className={cn("flex justify-between text-xs text-emphasis", className)} {...props}>
-      <p>{category}</p>
-      <p>{date}</p>
+    <div className={cn("flex flex-row justify-between text-xs text-emphasis", className)}
+    {...props}>
+      {!category && <Skeleton className="w-2/5 h-3"/>}
+      {category && <p>{category}</p>}
+
+      {!date && <Skeleton className="w-2/5 h-3"/>}
+      {date && <p>{date}</p>}
     </div>
   )
 }
 
-export function ThumbnailNews(
-  {src, w, h, className}: {src: string, w: number, h: number, className?: string}
-){
-  
+export function ThumbnailNews({src, w, h, className}: IPropsThumbnailNews){
   return(
-    <Image
-      alt=""
-      src={src}
-      className={cn("select-none rounded-sm", className)}
-      loading="lazy"
-      width={w}
-      height={h}
-    />
+    <>
+      {!src && <Skeleton className={cn("aspect-[15/11]", className)} style={{height: h, width: w}}/>}
+
+      {src && (
+        <Image
+          alt=""
+          src={src}
+          className={cn("select-none rounded-sm", className)}
+          loading="lazy"
+          width={w}
+          height={h}
+        />
+      )}
+    </>
   )
 }
 
@@ -60,12 +75,23 @@ export function CardNews({src, category, title, className, ...props}: IPropsCard
   const priority = props.priority === "high"? 1 : props.priority === "normal"? 2 : 3;
 
   return(
-    <card.Card className={cn("flex justify-center items-start border-none text-sm p-0", className )} 
+    <card.Card className={cn("flex justify-center items-start border-none text-sm p-0", className )}
     {...props}>
-      <card.CardContent className="p-0">
-        <ThumbnailNews src={src} w={750/priority} h={550/priority}/>
+      <card.CardContent className="p-0 w-full">
+
+        {!props.children && <ThumbnailNews src={src} w={750/priority} h={550/priority}/>}
+        {props.children && props.children}
+
         <NewsInformations className="my-1" category={category} date="04/03/23"/>
-        <p className="text-wrap min-w-full font-semibold w-min">{title}</p>
+        
+        {!title && (
+          <div className="flex flex-col gap-2">
+            <Skeleton style={{height: 48/priority}} className="w-4/5"/>
+            <Skeleton style={{height: 48/priority}} className="w-3/4"/>
+          </div>
+        )}
+        {title && <p className="text-wrap min-w-full font-semibold w-min">{title}</p>}
+        
       </card.CardContent>
     </card.Card>
   )

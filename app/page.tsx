@@ -1,5 +1,6 @@
 "use client"
 import { carousel, cardNews } from "@/components/index"
+import { Skeleton } from "@/components/ui";
 import * as api from "@/lib/api"
 import Link from "next/link";
 import React from "react";
@@ -11,7 +12,6 @@ function MainNews({news}: {news: api.IMainNews[] | undefined}){
     <carousel.CarouselImg>
       {news?.map(({id, ...n}, i) =>
         <cardNews.CardNewsBg key={id} { ...n }>
-
           {n?.btns.map((b) => (
             <cardNews.Button>
               <Link href={b.link} target="_blank">
@@ -19,7 +19,6 @@ function MainNews({news}: {news: api.IMainNews[] | undefined}){
               </Link>
             </cardNews.Button>
           ))}
-
         </cardNews.CardNewsBg>
       )}
     </carousel.CarouselImg>
@@ -28,7 +27,13 @@ function MainNews({news}: {news: api.IMainNews[] | undefined}){
 
 function RelevantNews({news}: {news: IPropNews}){
   return(
-    <div className="flex items-between gap-6">
+    <div className="flex items-between gap-6 width-full">
+      {!news && Array.from({length: 2}).map((_, i) =>
+          <cardNews.CardNews key={i} priority="high" className="w-full">
+            <cardNews.ThumbnailNews className="w-full aspect-[15/11]"/>
+          </cardNews.CardNews>
+      )}
+
       {news?.map(({id, ...attr}) =>
         <Link href={`/article/${id}`}>
           <cardNews.CardNews className="text-3xl" key={id} {...attr} priority="high"/>
@@ -41,6 +46,10 @@ function RelevantNews({news}: {news: IPropNews}){
 function News({news, title}: {news: IPropNews, title: string}){
   return(
     <carousel.CarouselItems title={title}>
+      {!news && Array.from({length: 17}).map((_, i) => (
+        <cardNews.CardNews key={i} priority="low"/>
+      ))}
+
       {news?.map(({id, ...attr}) =>
         <Link href={`/article/${id}`}>
           <cardNews.CardNews key={id} {...attr} priority="low"/>

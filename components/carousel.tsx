@@ -1,6 +1,6 @@
 import React from "react"
 import Autoplay from "embla-carousel-autoplay"
-import { carousel, btn } from "./ui"
+import { carousel, btn, Skeleton } from "./ui"
 import { cn } from "@/lib/utils"
 
 type IPropsDiv = React.HTMLAttributes<HTMLDivElement>
@@ -39,12 +39,10 @@ export function CarouselImg({ children, className, ...props }: IPropsDiv){
   const [api, setApi] = React.useState<carousel.CarouselApi>()
 
   return(
-    <carousel.Carousel setApi={setApi} plugins={[
-      Autoplay({
-        delay: 4000,
-      }),
-    ]} className={cn("relative select-none", className)} { ...props }>
+    <carousel.Carousel setApi={setApi} plugins={[Autoplay({delay: 4000})]} className={cn("relative select-none", className)} { ...props }>
       <carousel.CarouselContent>
+        {!children && <Skeleton className="block w-full aspect-[17/6] rounded-sm"/>}
+
         {React.Children.map(children, (child, i) => (
           <carousel.CarouselItem key={i} className="flex justify-center items-end">
             { child }
