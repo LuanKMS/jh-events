@@ -1,9 +1,9 @@
 "use client"
 
-import { componentFetch } from "@/lib/utils"
-import * as api from "@/lib/api"
 import React from "react"
-
+import * as api from "@/lib/api"
+import { componentFetch } from "@/lib/utils"
+import { articleRenderer } from "@/components/index"
 
 export default function Article({ params }: { params: { id: number } }){
   const [article, setArticle] = React.useState<string | null>(null)
@@ -14,7 +14,9 @@ export default function Article({ params }: { params: { id: number } }){
 
   return(
     <article>
-      {article}
+      <articleRenderer.Renderer>
+        {article}
+      </articleRenderer.Renderer>
     </article>
   )
 }

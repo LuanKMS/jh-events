@@ -122,6 +122,7 @@ export function CardNewsBg(
             </div>
           )}
         </div>
+        
         <ThumbnailNews src={src} w={1700} h={600}/>
       </card.CardContent>
     </card.Card>
