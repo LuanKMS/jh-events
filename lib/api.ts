@@ -203,3 +203,13 @@ export function get(): Promise<IDb>{
     setTimeout(() => resolve(db), 1000)
   })
 }
+
+const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non <a href='https://picsum.photos/'>proident</a>, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+const articleExemple = `<title>Algo foda</title><p>${loremIpsum}</p><img src="https://picsum.photos/1700/600"/><p>${loremIpsum}</p>`
+
+export function getArticle(): Promise<string>{
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(articleExemple), 1000)
+  })
+}

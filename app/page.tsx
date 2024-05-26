@@ -1,7 +1,7 @@
 "use client"
 import { carousel, cardNews } from "@/components/index"
-import { Skeleton } from "@/components/ui";
 import * as api from "@/lib/api"
+import { componentFetch } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
 
@@ -63,10 +63,7 @@ export default function Home(){
   const [db, setDb] = React.useState<api.IDb | undefined>()
   
   React.useEffect(() => {
-    async function featch(){
-      api.get().then((d) => setDb(d))
-    }
-    featch()
+    componentFetch(api.get, setDb)
   }, [])
 
   return(
