@@ -13,10 +13,8 @@ export default function Article({ params }: { params: { id: number } }){
   }, [])
 
   return(
-    <article>
-      <articleRenderer.Renderer>
-        {article}
-      </articleRenderer.Renderer>
-    </article>
+    <articleRenderer.Renderer className="w-2/3">
+      {article}
+    </articleRenderer.Renderer>
   )
 }
